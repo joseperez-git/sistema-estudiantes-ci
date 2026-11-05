@@ -1,0 +1,17 @@
+name: Pruebas automaticas
+on: [push, pull_request] # Se activa al subir código o hacer un PR
+permissions:
+  contents: read
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest # Usa una máquina virtual Ubuntu
+    steps:
+      - uses: actions/checkout@v6 # Descarga tu código
+      - uses: actions/setup-node@v7 # Instala Node.js
+        with:
+          node-version: '24'
+      - run: npm ci # Instala dependencias limpias
+      - run: npm test # Ejecuta tus pruebas
+
+
+      
